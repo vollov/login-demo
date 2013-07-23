@@ -4,23 +4,21 @@
 //	$scope.books = BookResource.query();
 //});
 
-demoApp.controller('LoginController', function ($scope, $location) {
+demoApp.controller('LoginController', function ($scope, AuthenticationService) {
 	window.scope = $scope;
 	$scope.credentials = { username: "", password: ""};
 	
 	$scope.login = function() {
-		if($scope.credentials.username === "dustin") {
-			$location.path('/home');
-		}
+		AuthenticationService.login($scope.credentials);
 		//console.log($scope.credentials.username);
 	};
 });
 
-demoApp.controller('HomeController', function ($scope, $location) {
-	$scope.title = "Senator";
-	$scope.message = "Mouse Over these images to see a directive at work";
+demoApp.controller('HomeController', [ '$scope', 'AuthenticationService', function (a,b) {
+	a.title = "Senator";
+	a.message = "Mouse Over these images to see a directive at work";
 	
-	$scope.logout = function() {
-		$location.path('/login');
+	a.logout = function() {
+		b.logout();
 	};
-});
+}]);
