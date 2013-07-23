@@ -5,6 +5,7 @@
 //});
 
 demoApp.controller('LoginController', function ($scope, $location) {
+	window.scope = $scope;
 	$scope.credentials = { username: "", password: ""};
 	
 	$scope.login = function() {
@@ -15,5 +16,11 @@ demoApp.controller('LoginController', function ($scope, $location) {
 	};
 });
 
-demoApp.controller('HomeController', function ($scope) {
+demoApp.controller('HomeController', function ($scope, $location) {
+	$scope.title = "Senator";
+	$scope.message = "Mouse Over these images to see a directive at work";
+	
+	$scope.logout = function() {
+		$location.path('/login');
+	};
 });
