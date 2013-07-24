@@ -14,3 +14,15 @@ demoApp.config(function($routeProvider) {
 		redirectTo : '/login'
 	});
 });
+
+demoApp.run(function($rootScope, $location, AuthenticationService){
+	var routesThatRequireAuth = ['/home'];
+
+	// add a global listener
+	$rootScope.$on('$routeChangeStart', function(event, next, current) {
+		debugger;
+		if(_(routesThatRequireAuth).contains($location.path()) && !AuthenticationService.isLoggedIn()) {
+			$location.path('/login');
+		};
+	});
+});
