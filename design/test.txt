@@ -1,0 +1,4 @@
+[1] Test backend
+curl http://localhost:5000/api/login
+curl http://localhost:5000/api/logout
+curl http://localhost:5000/api/login -d "email=dike.zhang@gmail.com&password=kkeess" -X POST -v

@@ -1,0 +1,11 @@
+
+
+post@auth/login
+	if( pwd match)
+		return json(user)
+	else
+		return json('Invalid user', 500)
+
+get@auth/logout ->
+	logout()
+	return json('logged out')
