@@ -1,17 +1,13 @@
 'use strict';
 
-demoApp.factory('AuthenticationService', function($location) {
+demoApp.factory('AuthenticationService', function($http, $location) {
   // these routes map to stubbed API endpoints in config/server.js
   return {
     login: function(credentials) {
-	  if(credentials.username === "dustin") {
-		  $location.path('/home');
-	  }
-      //return $http.post('/login', credentials);
+      return $http.post('/api/login', credentials);
     },
     logout: function() {
-    	$location.path('/login');
-      //return $http.post('/logout');
+      return $http.get('/api/logout');
     }
   };
 });

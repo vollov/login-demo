@@ -4,21 +4,25 @@
 //	$scope.books = BookResource.query();
 //});
 
-demoApp.controller('LoginController', function ($scope, AuthenticationService) {
+demoApp.controller('LoginController', function ($scope, $location, AuthenticationService) {
 	window.scope = $scope;
-	$scope.credentials = { username: "", password: ""};
+	$scope.credentials = { email: "", password: ""};
 	
 	$scope.login = function() {
-		AuthenticationService.login($scope.credentials);
+		AuthenticationService.login($scope.credentials).success(function() {
+			$location.path('/home');
+		});
 		//console.log($scope.credentials.username);
 	};
 });
 
-demoApp.controller('HomeController', [ '$scope', 'AuthenticationService', function (a,b) {
+demoApp.controller('HomeController', [ '$scope', '$location', 'AuthenticationService', function (a,c,b) {
 	a.title = "Senator";
 	a.message = "Mouse Over these images to see a directive at work";
 	
 	a.logout = function() {
-		b.logout();
+		b.logout().success(function() {
+			c.path('/login');
+		});
 	};
 }]);

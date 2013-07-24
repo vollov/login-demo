@@ -24,6 +24,11 @@ class User(Base):
     def dict(self):
         return {'id':self.id, 'name':self.email, 'password':self.password}
     
+#     @staticmethod
+#     def decode(data):
+#         print data
+#         return User(data['email'], data['password'], data['active'], data['id'])
+    
     #############################################################
     # method required by flask-login
     #############################################################
