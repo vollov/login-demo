@@ -1,0 +1,10 @@
+
+[] test
+curl -i http://localhost:5000/api/logout
+
+curl -X POST -H "Content-Type: application/json" -d '{"email":"mary@demo.org","password":"passwd"}' http://localhost:5000/api/login -v
+
+curl -i http://localhost:5000/api/login -d "email=aaa@gmail.com&password=qwew" -X POST -v
+
+curl -i http://localhost:5000/api/login -d "email=mary@demo.org&password=passwd" -X POST -v
+curl -i http://localhost:5000/api/login -H "Content-Type: application/json" -d "{"email":"mary@demo.org","password":"passwd"}" -X POST -v

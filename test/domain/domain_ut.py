@@ -22,9 +22,9 @@ class UserUt(unittest.TestCase):
 
     def test_insert_user(self):
         db_session.add_all([
-                         User('wendy', 'foobar', True),
-                         User('mary', 'passwd', False),
-                         User('fred', 'blah', True)])
+                         User('wendy@abc.com', 'foobar', True),
+                         User('mary@demo.org', 'passwd', False),
+                         User('fred@gmail.ca', 'blah', True)])
         db_session.commit()
         user = User.query.filter(User.id == 1).first()
         print user
